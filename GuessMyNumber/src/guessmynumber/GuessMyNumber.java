@@ -21,18 +21,24 @@ public class GuessMyNumber {
         Random generateurAleat = new Random(); 
         int n = generateurAleat.nextInt(100); 
         Scanner scanner = new Scanner(System.in);
+        int chiffre = -1;
+        while (chiffre != n) {
         System.out.print("Entrez un nombre entre 0 et 100: ");
-        int chiffre = scanner.nextInt(); // Lecture d'une ligne de text
+        chiffre = scanner.nextInt(); // Lecture d'une ligne de text
         if (n>chiffre){
-            System.out.println(" trop petit /n le Nombre etait:" + n);
+            System.out.println("Trop petit");
         }
+        
         else if (chiffre==n) {
-        System.out.println(" tu as gagne /n le Nombre etait:" + n);
-    }
-        else{
-            System.out.println(" trop grand /n le Nombre etait:" + n);
+        System.out.println("Tu as gagne");    
         }
-            
+        
+        else{
+            System.out.println("Trop grand");
+        }
+        
+      }   
+      scanner.close();
     }
     
 }
