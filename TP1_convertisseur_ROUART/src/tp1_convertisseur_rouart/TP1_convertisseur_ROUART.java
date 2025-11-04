@@ -23,15 +23,13 @@ public class TP1_convertisseur_ROUART{
     }
 
     // Kelvin à Fahrenheit
-    public static double KelvinVersFahrenheit(double valeurKelvin) {
-        // Astuce : on réutilise les méthodes déjà créées
+    public static double KelvinVersFahrenheit(double valeurKelvin) {       
         double valeurCelsius = KelvinVersCelsius(valeurKelvin);
         return CelsiusVersFahrenheit(valeurCelsius);
     }
 
     // Fahrenheit à Kelvin
-    public static double FahrenheitVersKelvin(double valeurFahrenheit) {
-        // Astuce : conversion indirecte via Celsius
+    public static double FahrenheitVersKelvin(double valeurFahrenheit) {        
         double valeurCelsius = FahrenheitVersCelsius(valeurFahrenheit);
         return CelsiusVersKelvin(valeurCelsius);
         
