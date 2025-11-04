@@ -64,7 +64,7 @@ public class TP1_convertisseur_ROUART{
             
         } else if (valeur == 4) {
             System.out.println("Choisi une temperature en Celsius");
-            double temp3 = CelsiusVersFahrenheit(sc.nextDouble()); 
+            double temp4 = CelsiusVersFahrenheit(sc.nextDouble()); 
             System.out.println("Voici ta temperature en Fahrenheit : " + temp4);
             
         } else if (valeur == 5) {
