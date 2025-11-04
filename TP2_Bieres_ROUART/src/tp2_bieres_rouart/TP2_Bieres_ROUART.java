@@ -19,7 +19,18 @@ public class TP2_Bieres_ROUART {
         uneBiere.lireEtiquette();
         BouteilleBiere deuxbiere = new BouteilleBiere("Leffe",6.6 ,"Abbaye de Leffe");
         deuxbiere.lireEtiquette();
-              
+        BouteilleBiere troibiere = new BouteilleBiere("8.6", 6 ,"Beerland");
+        troibiere.lireEtiquette();
+        BouteilleBiere quatrebiere = new BouteilleBiere("Diable", 100000 ,"Enfer");
+        quatrebiere.lireEtiquette();
+        BouteilleBiere cinqbiere = new BouteilleBiere("Dieu", 0 ,"Paradise");
+        cinqbiere.lireEtiquette();
+        System.out.println(uneBiere + "\n" + deuxbiere + "\n"+ troibiere +"\n"+ quatrebiere +"\n"+ cinqbiere);    
+        troibiere.Decapsuler();
+        uneBiere.Decapsuler();
+        uneBiere.Decapsuler();
+        System.out.println(uneBiere + "\n" + deuxbiere + "\n"+ troibiere +"\n"+ quatrebiere +"\n"+ cinqbiere);    
+        
     }
     
 }
