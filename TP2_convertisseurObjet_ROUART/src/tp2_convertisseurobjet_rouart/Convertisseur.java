@@ -43,14 +43,14 @@ public class Convertisseur {
 
     // Kelvin à Fahrenheit
     public double KelvinVersFahrenheit(double valeurKelvin) {
-        nbConversions++;
+        nbConversions-=1;
         double valeurCelsius = KelvinVersCelsius(valeurKelvin);
         return CelsiusVersFahrenheit(valeurCelsius);
     }
 
     // Fahrenheit à Kelvin
     public double FahrenheitVersKelvin(double valeurFahrenheit) {
-        nbConversions++;
+        nbConversions-=1;
         double valeurCelsius = FahrenheitVersCelsius(valeurFahrenheit);
         return CelsiusVersKelvin(valeurCelsius);
         
