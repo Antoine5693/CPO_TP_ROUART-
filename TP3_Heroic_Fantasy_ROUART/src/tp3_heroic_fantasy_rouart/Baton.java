@@ -9,14 +9,17 @@ package tp3_heroic_fantasy_rouart;
  * @author Rouart Antoine
  */
 public class Baton extends Arme {
-
-    public Baton(int NA, String nom) {
+    int age;
+    public Baton(String nom,int NA, int age) {
         super(NA, nom);
+        if (age > 100) {
+            System.out.println("baton cassé");
+        }  
+                else {
+                this.age = age;}
     }
-
+     
     @Override
     public String toString() {
-        return "Baton{" + '}';
-    }
-    
-}
+        return "\nnom : "+ nom + "\nniveau d'attaque " + NA +  " \nage = " + age  ;
+    }}

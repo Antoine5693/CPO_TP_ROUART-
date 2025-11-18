@@ -8,6 +8,7 @@ package tp3_heroic_fantasy_rouart;
  *
  * @author Rouart Antoine
  */
+import java.util.ArrayList;
 public class TP3_Heroic_Fantasy_ROUART {
 
     /**
@@ -15,8 +16,26 @@ public class TP3_Heroic_Fantasy_ROUART {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Epee x = new Epee (7.5,"Excalibur");
-        Baton y = new Baton (4.7,"Durandal"); 
+         Epee Excalibur = new Epee ("Excalibur",7,5 );
+         Epee Durandal = new Epee("Durandal",4,7);
+         Baton Chene = new Baton("Chene",4, 5);
+         Baton Charme = new Baton("Charme", 5, 6)  ;
+         
+         
+         ArrayList<Arme> armes = new ArrayList<>();
+          
+             armes.add(Excalibur);
+             armes.add(Durandal);
+             armes.add(Chene) ;
+             armes.add(Charme);
+            
+             for (Arme a: armes){
+                 System.out.println(a);
+             }
+            int Taille = armes.size(); 
+            System.out.println("\nNombre d'arme : " + Taille);
+            
+             
     }
     
 }
