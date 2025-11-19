@@ -8,6 +8,12 @@ package tp3_heroic_fantasy_rouart;
  *
  * @author Rouart Antoine
  */
+import Personnage.Personnage;
+import Personnage.Guerrier;
+import Personnage.Magicien;
+import Armes.Baton;
+import Armes.Epee;
+import Armes.Arme;
 import java.util.ArrayList;
 public class TP3_Heroic_Fantasy_ROUART {
 
@@ -36,6 +42,26 @@ public class TP3_Heroic_Fantasy_ROUART {
             System.out.println("\nNombre d'arme : " + Taille);
             
              
-    }
+ 
+    Magicien gandalf = new Magicien("Gandalf",65,true);
+    Magicien garcimore = new Magicien ("Garcimore",44,false);  
     
-}
+    Guerrier Conan = new Guerrier("Conan", 78,false) ;
+    Guerrier Lannister = new Guerrier("Lannister", 45,true)  ;
+    
+    ArrayList<Personnage> perso = new ArrayList<>();
+          
+             perso.add(gandalf);
+             perso.add(garcimore);
+             perso.add(Conan);
+             perso.add(Lannister);
+            
+            for (Personnage a: perso){
+                 System.out.println(a);
+             }
+            int T = perso.size(); 
+            System.out.println("\nNombre de perso : " + T);
+            
+            
+    
+}}
