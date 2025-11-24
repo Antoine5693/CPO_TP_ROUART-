@@ -23,5 +23,5 @@ public class Baton extends Arme {
      
     @Override
     public String toString() {
-        return "\nnom : "+ nom + "\nniveau d'attaque " + NA +  " \nage = " + age  ;
+        return "nom : "+ nom + "niveau d'attaque " + NA +  " age = " + age  ;
     }}

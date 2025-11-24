@@ -23,7 +23,7 @@ public class Epee extends Arme {
 
     @Override
     public String toString() {        
-        return  "\nnom : " + nom +"\nniveau d'attaque " + NA + " \nfinesse = " + finesse  ;
+        return  "nom : " + nom +" niveau d'attaque " + NA + " finesse = " + finesse  ;
     }
 
  

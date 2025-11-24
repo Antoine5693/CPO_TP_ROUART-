@@ -4,6 +4,7 @@
  */
 package Personnage;
 import Armes.*;
+import static Personnage.Magicien.nbMagicien;
 import java.util.ArrayList;
 /**
  *
@@ -13,10 +14,11 @@ public abstract class Personnage {
     String nom;
     int PV;
     Arme Arme_en_Main = null;
-
+    static int nbPerso=0;
     public Personnage(String nom, int PV) {
         this.nom = nom;
         this.PV = PV;
+        nbPerso++ ;
     }
     
     ArrayList<Arme> TabA = new ArrayList<>();   
@@ -41,10 +43,15 @@ public abstract class Personnage {
         
         
     }
+    public static int GetnbPerso(){
+        return nbPerso;    
+    }    
 
+  
+    
     @Override
     public String toString() {
-        return "Personnage{" + "nom=" + nom + ", PV=" + PV + ", Arme_en_Main=" + Arme_en_Main + ", TabA=" + TabA + ", Taille1=" + Taille1 + '}';
+        return "Personnage{" + "nom=" + nom + ", PV=" + PV + ", Arme_en_Main=" + Arme_en_Main + ", inventaire=" + TabA + ", Taille1=" + Taille1 + '}';
     }
 }
 

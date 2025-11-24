@@ -10,10 +10,15 @@ package Personnage;
  */
 public class Magicien extends Personnage {
     Boolean comfirmé;
-
+    static int nbMagicien=0;
     public Magicien(String nom,int PV, Boolean comfirmé ) {
         super(nom, PV);
         this.comfirmé = comfirmé;
+        nbMagicien++;
+    }
+
+    public static int getNbMagicien() {
+        return nbMagicien;
     }
 
     public void setComfirmé(Boolean comfirmé) {

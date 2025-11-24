@@ -43,16 +43,16 @@ public class TP3_Heroic_Fantasy_ROUART {
             
              
  
-    Magicien gandalf = new Magicien("Gandalf",65,true);
-    Magicien garcimore = new Magicien ("Garcimore",44,false);  
+    Magicien Gandalf = new Magicien("Gandalf",65,true);
+    Magicien Garcimore = new Magicien ("Garcimore",44,false);  
     
     Guerrier Conan = new Guerrier("Conan", 78,false) ;
     Guerrier Lannister = new Guerrier("Lannister", 45,true)  ;
     
     ArrayList<Personnage> perso = new ArrayList<>();
           
-             perso.add(gandalf);
-             perso.add(garcimore);
+             perso.add(Gandalf);
+             perso.add(Garcimore);
              perso.add(Conan);
              perso.add(Lannister);
             
@@ -62,6 +62,21 @@ public class TP3_Heroic_Fantasy_ROUART {
             int T = perso.size(); 
             System.out.println("\nNombre de perso : " + T);
             
-            
+    Arme baton1 = new Baton("Bâton en bois",7, 2);                
+    Arme baton2 = new Baton("Bâton magique",19, 6);
+    Arme baton3 = new Baton("Bâton runique",34, 10);
+    Arme epee1 = new Epee("EpEe courte",8, 12);
+    Arme epee2 = new Epee("Epee longue",18, 20);
+    Arme epee3 = new Epee("Epee légendaire",78, 45);
+    Conan.ajouteArme(baton1);
+    Conan.ajouteArme(epee1);
+    Conan.ajouteArme(epee3);
+    Conan.equiperArme(epee3);
+    System.out.println(Conan);
+    Gandalf.ajouteArme(baton2);
+    Gandalf.ajouteArme(baton3);
+    Gandalf.ajouteArme(epee2);
+    Gandalf.equiperArme(baton3);
+    System.out.println(Gandalf);
     
 }}
