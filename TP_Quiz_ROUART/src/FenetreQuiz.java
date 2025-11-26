@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -7,6 +10,7 @@
  *
  * @author Rouart Antoine
  */
+
 public class FenetreQuiz extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FenetreQuiz.class.getName());
@@ -16,14 +20,13 @@ public class FenetreQuiz extends javax.swing.JFrame {
      */
     public FenetreQuiz() {
         initComponents();        
-        initialiserQuestions();}
-  
+        initialiserQuestions();     
+        afficherQuestionCourante();
+        }
+    int Score=0;
     private ArrayList<Question> questions = new ArrayList<>();
     private int indexQuestionCourante = 0; 
-    private void initialiserQuestions() {        
-        questions = new ArrayList<>();  
-        indexQuestionCourante++;
-
+    private void initialiserQuestions() {     
         questions.add(new Question(
             "Quel est le plus grand océan du monde ?",
             "Atlantique",
@@ -69,9 +72,24 @@ public class FenetreQuiz extends javax.swing.JFrame {
             2
         ));
     }
-}
 
+private void afficherQuestionCourante(){    
+    indexQuestionCourante++;    
+    Question q = questions.get(indexQuestionCourante);
+    lblQuestion.setText(q.getIntitule());
+    btnRep1.setText(q.getProposition1());
+    btnRep2.setText(q.getProposition2());
+    btnRep3.setText(q.getProposition3());
+    btnRep4.setText(q.getProposition4());
+    btnRep1.setEnabled(true);
+    btnRep2.setEnabled(true);
+    btnRep3.setEnabled(true);
+    btnRep4.setEnabled(true);
+    Fin.setVisible(false);
+    Feedback.setVisible(false);
+   }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,11 +105,10 @@ public class FenetreQuiz extends javax.swing.JFrame {
         btnRep2 = new javax.swing.JButton();
         btnRep3 = new javax.swing.JButton();
         btnRep4 = new javax.swing.JButton();
-        Bonne_rep = new javax.swing.JLabel();
-        Mauvaise_rep = new javax.swing.JLabel();
-        Score = new javax.swing.JLabel();
-        Score_courant = new javax.swing.JLabel();
+        Feedback = new javax.swing.JLabel();
+        labelScore = new javax.swing.JLabel();
         Question_suiv = new javax.swing.JButton();
+        Fin = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -99,28 +116,39 @@ public class FenetreQuiz extends javax.swing.JFrame {
 
         lblQuestion.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         lblQuestion.setForeground(new java.awt.Color(122, 66, 200));
-        lblQuestion.setText("Intitulé");
+        lblQuestion.setText("      Intitulé");
 
-        btnRep1.setText("jButton2");
+        btnRep1.setText("Bouton 1");
         btnRep1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRep1ActionPerformed(evt);
             }
         });
 
-        btnRep2.setText("jButton3");
+        btnRep2.setText("Bouton 2");
+        btnRep2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRep2ActionPerformed(evt);
+            }
+        });
 
-        btnRep3.setText("jButton4");
+        btnRep3.setText("Bouton 3");
+        btnRep3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRep3ActionPerformed(evt);
+            }
+        });
 
-        btnRep4.setText("jButton5");
+        btnRep4.setText("Bouton 4");
+        btnRep4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRep4ActionPerformed(evt);
+            }
+        });
 
-        Bonne_rep.setText("Bonne réponse!");
+        Feedback.setText("Feedback");
 
-        Mauvaise_rep.setText("Mauvaise réponse!");
-
-        Score.setText("Score: ");
-
-        Score_courant.setText("Score: ");
+        labelScore.setText("Score: ");
 
         Question_suiv.setText("Question Suivante");
         Question_suiv.addActionListener(new java.awt.event.ActionListener() {
@@ -129,82 +157,178 @@ public class FenetreQuiz extends javax.swing.JFrame {
             }
         });
 
+        Fin.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRep4)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnRep2)
-                        .addGap(166, 166, 166))
+                        .addContainerGap(59, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRep1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRep2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Bonne_rep, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Mauvaise_rep)
-                        .addGap(120, 120, 120))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRep3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRep4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(Fin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Question_suiv)
+                        .addGap(30, 30, 30))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Score)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(169, 169, 169)
-                            .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(Score_courant))
-                                .addComponent(btnRep1)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(98, 98, 98)
-                            .addComponent(btnRep3)
-                            .addGap(31, 31, 31)
-                            .addComponent(Question_suiv))))
+                .addGap(111, 111, 111)
+                .addComponent(Feedback, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnRep3)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Score_courant)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Question_suiv)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRep1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRep2)
-                    .addComponent(btnRep4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Score)
-                .addGap(40, 40, 40)
+                    .addComponent(Question_suiv)
+                    .addComponent(labelScore, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fin))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Bonne_rep, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Mauvaise_rep))
-                .addGap(42, 42, 42))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRep3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRep1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRep2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRep4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRep1ActionPerformed
-        // TODO add your handling code here:
+    int Choix=1;
+    int indexCourant = indexQuestionCourante;    
+    Question q = questions.get(indexCourant);    
+    int Reponse = q.getIndexBonneReponse();
+    if (Choix == Reponse) {
+    Score++;           
+    Feedback.setText("Bonne réponse!");    
+    Feedback.setVisible(true);
+    btnRep1.setEnabled(false);
+    btnRep2.setEnabled(false);
+    btnRep3.setEnabled(false);
+    btnRep4.setEnabled(false);  
+    }   
+    else{
+    Feedback.setVisible(true);
+    Feedback.setText("Mauvaise réponse, t'es nul!"); 
+    Feedback.setVisible(true);
+    }
+    labelScore.setText("Score :"+Score);
+    btnRep1.setEnabled(false);
+    // TODO add your handling code here:
     }//GEN-LAST:event_btnRep1ActionPerformed
 
     private void Question_suivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Question_suivActionPerformed
-        // TODO add your handling code here:
+    int indexCourant = indexQuestionCourante;    
+    int Taille=questions.size();  
+    Taille=Taille-1;
+    if (indexCourant < Taille){
+        afficherQuestionCourante();
+    }
+    else{
+        Fin.setVisible(true);
+        Fin.setText("Quiz terminé. Score : " + Score + " / " + Taille);
+        Question_suiv.setEnabled(false); 
+    }
     }//GEN-LAST:event_Question_suivActionPerformed
+
+    private void btnRep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRep3ActionPerformed
+    int Choix=3;
+    int indexCourant = indexQuestionCourante;
+    Question q = questions.get(indexCourant);     
+    int Reponse = q.getIndexBonneReponse();
+    if (Choix == Reponse) {
+    Score++;   
+    Feedback.setText("Bonne réponse!");   
+    Feedback.setVisible(true);
+    btnRep1.setEnabled(false);
+    btnRep2.setEnabled(false);
+    btnRep3.setEnabled(false);
+    btnRep4.setEnabled(false);    
+    }   
+    else{
+    Feedback.setText("Mauvaise réponse, t'es nul!"); 
+    Feedback.setVisible(true);
+    }
+    labelScore.setText("Score :"+Score);
+    btnRep3.setEnabled(false);
+    }//GEN-LAST:event_btnRep3ActionPerformed
+
+    private void btnRep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRep2ActionPerformed
+    int Choix=2;
+    int indexCourant = indexQuestionCourante;
+    Question q = questions.get(indexCourant);      
+    int Reponse = q.getIndexBonneReponse();
+    if (Choix == Reponse) {
+    Score++;   
+    Feedback.setText("Bonne réponse!")   ;    
+    Feedback.setVisible(true);
+    btnRep1.setEnabled(false);
+    btnRep2.setEnabled(false);
+    btnRep3.setEnabled(false);
+    btnRep4.setEnabled(false); 
+    }   
+    else{
+    Feedback.setText("Mauvaise réponse, t'es nul!"); 
+    Feedback.setVisible(true);
+    }
+    labelScore.setText("Score :"+Score);
+    btnRep2.setEnabled(false);
+    
+    }//GEN-LAST:event_btnRep2ActionPerformed
+
+    private void btnRep4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRep4ActionPerformed
+    int Choix=4;
+    int indexCourant = indexQuestionCourante;
+    Question q = questions.get(indexCourant);     
+    int Reponse = q.getIndexBonneReponse();
+    if (Choix == Reponse) {
+    Score++;   
+    Feedback.setText("Bonne réponse!")   ;  
+    Feedback.setVisible(true);
+    btnRep1.setEnabled(false);
+    btnRep2.setEnabled(false);
+    btnRep3.setEnabled(false);
+    btnRep4.setEnabled(false); 
+    }   
+    else{
+    Feedback.setText("Mauvaise réponse, t'es nul!"); 
+    Feedback.setVisible(true);
+    }
+    labelScore.setText("Score :"+Score);
+    btnRep4.setEnabled(false);  
+    }//GEN-LAST:event_btnRep4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,16 +357,15 @@ public class FenetreQuiz extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Bonne_rep;
-    private javax.swing.JLabel Mauvaise_rep;
+    private javax.swing.JLabel Feedback;
+    private javax.swing.JLabel Fin;
     private javax.swing.JButton Question_suiv;
-    private javax.swing.JLabel Score;
-    private javax.swing.JLabel Score_courant;
     private javax.swing.JButton btnRep1;
     private javax.swing.JButton btnRep2;
     private javax.swing.JButton btnRep3;
     private javax.swing.JButton btnRep4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel labelScore;
     private javax.swing.JLabel lblQuestion;
     // End of variables declaration//GEN-END:variables
 }
