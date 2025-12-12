@@ -205,7 +205,7 @@ public class cadenas extends javax.swing.JFrame {
                 bouton_recommencerActionPerformed(evt);
             }
         });
-        getContentPane().add(bouton_recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+        getContentPane().add(bouton_recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, -1));
 
         texte_nb_chiffre_exacts.setText("Nombre de chiffre exact:");
         getContentPane().add(texte_nb_chiffre_exacts, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 238, 143, 24));
